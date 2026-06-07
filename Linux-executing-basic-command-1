@@ -1,0 +1,609 @@
+# Linux Beginners - File System Navigation Fundamentals
+
+## Learning Objectives
+
+After completing this module, you will be able to:
+
+* Understand the Linux file system structure
+* Navigate directories using the `cd` command
+* Differentiate between absolute and relative paths
+* Use shortcuts such as `cd`, `cd -`
+* Access command documentation using `man`
+* Search and navigate inside manual pages
+
+---
+
+# Understanding Linux File System
+
+Linux uses a hierarchical directory structure.
+
+Everything starts from the root directory `/`.
+
+```text
+                /
+                |
+    -------------------------------------
+    |     |      |      |       |
+   home  tmp    etc    usr    boot
+    |
+    ---------------------------------
+    |                               |
+  nilesh                         minesh
+ (/home/nilesh)               (/home/minesh)
+
+tmp
+ |
+ mydir
+ |
+ ------------------------
+ |          |           |
+dev        test        prod
+```
+
+---
+
+# Root Directory
+
+The root directory is represented by:
+
+```bash
+/
+```
+
+It is the starting point of the entire Linux file system.
+
+Examples:
+
+```bash
+/home
+/tmp
+/etc
+/usr
+```
+
+All of the above begin from root.
+
+---
+
+# Absolute Path
+
+An absolute path always starts with `/`.
+
+Examples:
+
+```bash
+/home/nilesh
+/home/minesh
+/tmp/mydir/dev
+/tmp/mydir/test
+/tmp/mydir/prod
+```
+
+Characteristics:
+
+* Starts with `/`
+* Can be accessed from any location
+* Provides the complete path
+
+Example:
+
+```bash
+cd /tmp/mydir/dev
+```
+
+---
+
+# Relative Path
+
+A relative path does NOT start with `/`.
+
+It is interpreted from the current working directory.
+
+Example:
+
+Current directory:
+
+```bash
+/tmp/mydir
+```
+
+Navigate to dev:
+
+```bash
+cd dev
+```
+
+Navigate to test:
+
+```bash
+cd ../test
+```
+
+Navigate to prod:
+
+```bash
+cd ../prod
+```
+
+---
+
+# Check Current Directory
+
+Use:
+
+```bash
+pwd
+```
+
+Example:
+
+```bash
+$ pwd
+/home/nilesh
+```
+
+Output shows the current working directory.
+
+---
+
+# Using cd Command
+
+## Change Directory Using Absolute Path
+
+```bash
+cd /tmp/mydir/dev
+```
+
+Result:
+
+```bash
+/tmp/mydir/dev
+```
+
+---
+
+## Change Directory Using Relative Path
+
+Current directory:
+
+```bash
+/tmp/mydir
+```
+
+Command:
+
+```bash
+cd dev
+```
+
+Result:
+
+```bash
+/tmp/mydir/dev
+```
+
+---
+
+## Go To Home Directory
+
+```bash
+cd
+```
+
+or
+
+```bash
+cd ~
+```
+
+Example:
+
+```bash
+$ pwd
+/tmp/mydir/dev
+
+$ cd
+
+$ pwd
+/home/nilesh
+```
+
+---
+
+## Return To Previous Directory
+
+```bash
+cd -
+```
+
+Example:
+
+```bash
+$ pwd
+/home/nilesh
+
+$ cd /tmp/mydir/dev
+
+$ cd -
+
+/home/nilesh
+```
+
+---
+
+# Understanding . and ..
+
+## Current Directory
+
+```bash
+.
+```
+
+Represents current directory.
+
+Example:
+
+```bash
+cd .
+```
+
+No directory change occurs.
+
+---
+
+## Parent Directory
+
+```bash
+..
+```
+
+Represents one level up.
+
+Example:
+
+```bash
+cd ..
+```
+
+If current directory is:
+
+```bash
+/tmp/mydir/dev
+```
+
+Result:
+
+```bash
+/tmp/mydir
+```
+
+---
+
+# Manual Pages (man)
+
+Linux provides built-in documentation using `man`.
+
+Syntax:
+
+```bash
+man command_name
+```
+
+Example:
+
+```bash
+man cd
+```
+
+```bash
+man ls
+```
+
+```bash
+man pwd
+```
+
+---
+
+# Navigating Inside man Pages
+
+## Quit
+
+Press:
+
+```text
+q
+```
+
+---
+
+## Search Text
+
+Press:
+
+```text
+/string
+```
+
+Example:
+
+```text
+/path
+```
+
+Press Enter.
+
+---
+
+## Find Next Match
+
+Press:
+
+```text
+n
+```
+
+---
+
+## Find Previous Match
+
+Press:
+
+```text
+N
+```
+
+---
+
+# Examples
+
+## Example 1
+
+Current Directory:
+
+```bash
+/home/nilesh
+```
+
+Command:
+
+```bash
+cd /tmp/mydir/test
+```
+
+Result:
+
+```bash
+/tmp/mydir/test
+```
+
+Absolute path used.
+
+---
+
+## Example 2
+
+Current Directory:
+
+```bash
+/tmp/mydir
+```
+
+Command:
+
+```bash
+cd prod
+```
+
+Result:
+
+```bash
+/tmp/mydir/prod
+```
+
+Relative path used.
+
+---
+
+## Example 3
+
+Current Directory:
+
+```bash
+/tmp/mydir/prod
+```
+
+Command:
+
+```bash
+cd ..
+```
+
+Result:
+
+```bash
+/tmp/mydir
+```
+
+---
+
+# Exercises
+
+## Exercise 1
+
+Identify whether the path is Absolute or Relative.
+
+1. `/home/nilesh`
+2. `prod`
+3. `/tmp/mydir/test`
+4. `../dev`
+5. `/etc`
+
+---
+
+## Exercise 2
+
+Current directory:
+
+```bash
+/tmp/mydir
+```
+
+What command will take you to:
+
+1. dev
+2. test
+3. prod
+
+Using relative paths only.
+
+---
+
+## Exercise 3
+
+Current directory:
+
+```bash
+/tmp/mydir/dev
+```
+
+Write command to move to:
+
+1. `/home/nilesh`
+2. `/tmp/mydir/test`
+3. `/tmp/mydir/prod`
+
+---
+
+## Exercise 4
+
+What is the purpose of:
+
+```bash
+cd
+```
+
+```bash
+cd -
+```
+
+```bash
+pwd
+```
+
+```bash
+man ls
+```
+
+---
+
+## Exercise 5
+
+Inside a man page:
+
+1. How do you quit?
+2. How do you search for "path"?
+3. How do you find next occurrence?
+4. How do you find previous occurrence?
+
+---
+
+# Answer Key
+
+## Exercise 1
+
+| Path            | Type     |
+| --------------- | -------- |
+| /home/nilesh    | Absolute |
+| prod            | Relative |
+| /tmp/mydir/test | Absolute |
+| ../dev          | Relative |
+| /etc            | Absolute |
+
+---
+
+## Exercise 2
+
+```bash
+cd dev
+```
+
+```bash
+cd test
+```
+
+```bash
+cd prod
+```
+
+---
+
+## Exercise 3
+
+```bash
+cd /home/nilesh
+```
+
+```bash
+cd ../test
+```
+
+```bash
+cd ../prod
+```
+
+---
+
+## Exercise 4
+
+```bash
+cd
+```
+
+Move to home directory.
+
+```bash
+cd -
+```
+
+Move to previous directory.
+
+```bash
+pwd
+```
+
+Display current working directory.
+
+```bash
+man ls
+```
+
+Open ls command documentation.
+
+---
+
+## Exercise 5
+
+Quit:
+
+```text
+q
+```
+
+Search:
+
+```text
+/path
+```
+
+Next occurrence:
+
+```text
+n
+```
+
+Previous occurrence:
+
+```text
+N
+```
