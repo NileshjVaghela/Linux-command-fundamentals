@@ -67,7 +67,7 @@ $ pwd
 Output:
 
 ```text
-/ home / student
+/home/student
 ```
 
 ---
